@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/news_nav_graph"
+    app:startDestination="@id/headLinesFragment">
+
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="com.example.news.ui.fragments.ArticleFragment"
+        android:label="ArticleFragment">
+        <argument
+            android:name="article"
+            app:argType="com.example.news.models.Article" />
+    </fragment>
+    <fragment
+        android:id="@+id/headLinesFragment"
+        android:name="com.example.news.ui.fragments.HeadLinesFragment"
+        android:label="HeadLinesFragment">
+        <action
+            android:id="@+id/action_headLinesFragment_to_articleFragment"
+            app:destination="@id/articleFragment">
+            <argument
+                android:name="article"
+                app:argType="com.example.news.models.Article"
+                app:nullable="true" />
+        </action>
+        <!-- Add the following action to navigate to SearchFragment -->
+        <action
+            android:id="@+id/action_headLinesFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.news.ui.fragments.FavoritesFragment"
+        android:label="FavoritesFragment">
+        <action
+            android:id="@+id/action_favoritesFragment_to_articleFragment"
+            app:destination="@id/articleFragment">
+            <argument
+                android:name="article"
+                app:argType="com.example.news.models.Article"
+                app:nullable="true" />
+        </action>
+        <!-- Add the following action to navigate to SearchFragment -->
+        <action
+            android:id="@+id/action_favoritesFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.news.ui.fragments.SearchFragment"
+        android:label="SearchNewsFragment">
+        <action
+            android:id="@+id/action_searchNewsFragment_to_articleFragment"
+            app:destination="@id/articleFragment">
+            <argument
+                android:name="article"
+                app:argType="com.example.news.models.Article"
+                app:nullable="true" />
+        </action>
+    </fragment>
+</navigation>
